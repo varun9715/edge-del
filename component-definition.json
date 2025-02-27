@@ -159,7 +159,7 @@
         },
         {
           "title": "Teaser",
-          "id": "teaset",
+          "id": "teaser",
           "plugins": {
             "xwalk": {
               "page": {
