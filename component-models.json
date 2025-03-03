@@ -206,6 +206,7 @@
         "valueType": "string",
         "required":true,
         "name": "preTitle",
+        "placeholder": "Enter the Pretitle",
         "label": "Pre Title",
         "value": ""
       },
