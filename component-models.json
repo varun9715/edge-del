@@ -271,7 +271,8 @@
         "valueType": "string",
         "required":true,
         "validation" : {
-          "minLength": 1
+          "minLength": 10,
+          "customErrorMsg" : "Please enter atleast 10 letter"
         },
         "name": "preTitle",
         "placeholder": "Enter the Pretitle",
