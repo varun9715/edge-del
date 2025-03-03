@@ -282,6 +282,15 @@
       {
         "component": "text",
         "valueType": "string",
+        "required":true,
+        "name": "newval",
+        "placeholder": "Enter the New Value",
+        "label": "New Value",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
         "name": "title",
         "label": "Title",
         "value": ""
