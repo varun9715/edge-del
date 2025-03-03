@@ -270,6 +270,9 @@
         "component": "text",
         "valueType": "string",
         "required":true,
+        "validation" : {
+          "minLength": 1
+        },
         "name": "preTitle",
         "placeholder": "Enter the Pretitle",
         "label": "Pre Title",
