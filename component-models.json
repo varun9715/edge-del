@@ -204,6 +204,7 @@
       {
         "component": "text",
         "valueType": "string",
+        "required":true,
         "name": "preTitle",
         "label": "Pre Title",
         "value": ""
