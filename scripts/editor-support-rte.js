@@ -1,11 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable no-cond-assign */
-/* eslint-disable import/prefer-default-export */
-
-// group editable texts in single wrappers if applicable.
-// this script should execute after script.js but before the the universal editor cors script
-// and any block being loaded
-
 export function decorateRichtext(container = document) {
   function deleteInstrumentation(element) {
     delete element.dataset.richtextResource;
@@ -60,14 +52,20 @@ export function decorateRichtext(container = document) {
       if (richtextLabel) group.dataset.aueLabel = richtextLabel;
       if (richtextFilter) group.dataset.aueFilter = richtextFilter;
       group.dataset.aueType = 'richtext';
+
+      // CUSTOM TOOLBAR WITHOUT H1
+      group.dataset.aueConfig = JSON.stringify({
+        toolbar: ['bold', 'italic', 'underline', 'strikethrough', 'link', 'unorderedList', 'orderedList'],
+        heading: { options: ['h2', 'h3', 'h4', 'h5', 'h6'] }, // Exclude 'h1'
+      });
+
       element.replaceWith(group);
       group.append(element, ...siblings);
     }
   }
 }
 
-// in cases where the block decoration is not done in one synchronous iteration we need to listen
-// for new richtext-instrumented elements
+// Observer for dynamically added elements
 const observer = new MutationObserver(() => decorateRichtext());
 observer.observe(document, { attributeFilter: ['data-richtext-prop'], subtree: true });
 
