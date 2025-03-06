@@ -60,6 +60,20 @@
     ]
   },
   {
+    "id": "text",
+    "rte": {
+      "format": ["bold", "italic"],
+      "alignment": [],
+      "indentation": [],
+      "sr_script": ["superscript", "subscript"],
+      "list": ["bullist", "numlist"],
+      "insert": ["link"],
+      "advanced": [],
+      "extensions": [],
+      "editor": ["removeformat"]
+    }
+  },
+  {
     "id": "table-4-columns",
     "components": [
       "table-col-4"
