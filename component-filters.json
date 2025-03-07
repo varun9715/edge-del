@@ -44,7 +44,7 @@
   {
     "id": "teaser",
     "rte": {
-      "blocks" : ["h1","h2","h3"],
+      "blocks" : ["h1","h2","h3","h4","h5"],
       "format": ["bold"],
       "alignment": [],
       "indentation": [],
