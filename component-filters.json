@@ -54,5 +54,19 @@
       "extensions": [],
       "editor": []
     }
+  },
+  {
+    "id": "Horizontal-Link-Text",
+    "rte": {
+      "format": ["bold"],
+      "alignment": [],
+      "indentation": [],
+      "sr_script": [],
+      "list": ["bullist"],
+      "insert": ["link"],
+      "advanced": [],
+      "extensions": [],
+      "editor": []
+    }
   }
 ]

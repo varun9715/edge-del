@@ -158,6 +158,22 @@
           }
         },
         {
+          "title": "Horizontal-Link-Text",
+          "id": "Horizontal-Link-Text",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Horizontal-Link-Text",
+                  "model": "Horizontal-Link-Text",
+                  "filter": "Horizontal-Link-Text"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Teaser",
           "id": "teaser",
           "plugins": {

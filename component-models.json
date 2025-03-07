@@ -202,5 +202,17 @@
         "valueType": "string"
       }
     ]
+  },
+  {
+    "id": "Horizontal-Link-Text",
+    "fields": [
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "horizontal-link-text",
+        "value": "",
+        "label": "Horizontal Link Text"
+      }
+    ]
   }
 ]
