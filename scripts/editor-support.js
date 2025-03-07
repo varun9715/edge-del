@@ -14,7 +14,7 @@ import { decorateMain } from './scripts.js';
  * Fetches metadata to check enabled feature flags.
  */
 async function getFeatureFlags() {
-  const metaTag = teaser;
+  const metaTag = 'teaser';
   return metaTag;
 }
 
@@ -22,7 +22,7 @@ async function getFeatureFlags() {
  * Filters out blocks based on feature flags
  */
 async function filterBlocks(container) {
-  const featureFlags = await getFeatureFlags();
+  const featureFlags = await getFeatureFlags();  // teaser
 
   container.querySelectorAll('.block[data-feature-flag]').forEach(block => {
     const requiredFlag = block.getAttribute('data-feature-flag');
