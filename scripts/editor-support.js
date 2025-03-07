@@ -10,14 +10,36 @@ import {
 import { decorateRichtext } from './editor-support-rte.js';
 import { decorateMain } from './scripts.js';
 
-async function applyChanges(event) {
-  // redecorate default content and blocks on patches (in the properties rail)
-  const { detail } = event;
+/**
+ * Fetches metadata to check enabled feature flags.
+ */
+async function getFeatureFlags() {
+  const metaTag = teaser;
+  return metaTag;
+}
 
-  const resource = detail?.request?.target?.resource // update, patch components
-    || detail?.request?.target?.container?.resource // update, patch, add to sections
-    || detail?.request?.to?.container?.resource; // move in sections
+/**
+ * Filters out blocks based on feature flags
+ */
+async function filterBlocks(container) {
+  const featureFlags = await getFeatureFlags();
+
+  container.querySelectorAll('.block[data-feature-flag]').forEach(block => {
+    const requiredFlag = block.getAttribute('data-feature-flag');
+    if (!featureFlags.includes(requiredFlag)) {
+      block.remove(); // Hide block if feature flag is not enabled
+    }
+  });
+}
+
+async function applyChanges(event) {
+  const { detail } = event;
+  const resource = detail?.request?.target?.resource 
+    || detail?.request?.target?.container?.resource 
+    || detail?.request?.to?.container?.resource;
+
   if (!resource) return false;
+
   const updates = detail?.response?.updates;
   if (!updates.length) return false;
   const { content } = updates[0];
@@ -34,9 +56,9 @@ async function applyChanges(event) {
       decorateMain(newMain);
       decorateRichtext(newMain);
       await loadSections(newMain);
+      await filterBlocks(newMain); // Filter blocks based on feature flags
       element.remove();
       newMain.style.display = null;
-      // eslint-disable-next-line no-use-before-define
       attachEventListners(newMain);
       return true;
     }
@@ -53,12 +75,12 @@ async function applyChanges(event) {
         decorateBlock(newBlock);
         decorateRichtext(newBlock);
         await loadBlock(newBlock);
+        await filterBlocks(newBlock); // Apply feature flag check on the new block
         block.remove();
         newBlock.style.display = null;
         return true;
       }
     } else {
-      // sections and default content, may be multiple in the case of richtext
       const newElements = parsedUpdate.querySelectorAll(`[data-aue-resource="${resource}"],[data-richtext-resource="${resource}"]`);
       if (newElements.length) {
         const { parentElement } = element;
@@ -72,6 +94,7 @@ async function applyChanges(event) {
           decorateSections(parentElement);
           decorateBlocks(parentElement);
           await loadSections(parentElement);
+          await filterBlocks(newSection); // Apply feature flag check on the section
           element.remove();
           newSection.style.display = null;
         } else {
@@ -79,12 +102,12 @@ async function applyChanges(event) {
           decorateButtons(parentElement);
           decorateIcons(parentElement);
           decorateRichtext(parentElement);
+          await filterBlocks(parentElement); // Apply feature flag check on the replaced elements
         }
         return true;
       }
     }
   }
-
   return false;
 }
 
