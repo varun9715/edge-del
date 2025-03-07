@@ -62,15 +62,15 @@
   {
     "id": "teaser",
     "rte": {
-      "format": ["bold", "italic"],
+      "format": ["bold"],
       "alignment": [],
       "indentation": [],
-      "sr_script": ["superscript"],
-      "list": ["bullist", "numlist"],
+      "sr_script": [],
+      "list": ["bullist"],
       "insert": ["link"],
       "advanced": [],
       "extensions": [],
-      "editor": ["removeformat"]
+      "editor": []
     }
   },
   {

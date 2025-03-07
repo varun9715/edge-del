@@ -297,9 +297,9 @@
       },
       {
         "component": "richtext",
-        "name": "text",
+        "name": "teaser",
         "value": "",
-        "label": "Text",
+        "label": "Teaser",
         "valueType": "string"
       }
     ]
