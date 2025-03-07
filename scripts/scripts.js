@@ -12,6 +12,11 @@ import {
   loadCSS,
 } from './aem.js';
 
+const featureFlags = {
+  "teaser": false, // Set to 'true' when you want to enable it
+  "promo-banner": true,
+};
+
 /**
  * Moves all the attributes from a given elmenet to another given element.
  * @param {Element} from the element to copy attributes from

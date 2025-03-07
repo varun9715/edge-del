@@ -23,6 +23,7 @@ export function decorateRichtext(container = document) {
       richtextLabel,
     } = element.dataset;
     deleteInstrumentation(element);
+
     const siblings = [];
     let sibling = element;
     while (sibling = sibling.nextElementSibling) {
