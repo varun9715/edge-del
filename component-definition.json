@@ -253,7 +253,7 @@
                 "template": {
                   "name": "Teaser",
                   "model": "teaser",
-                  "id":"teaser"
+                  "filter":"teaser"
                 }
               }
             }
