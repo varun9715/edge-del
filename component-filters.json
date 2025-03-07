@@ -60,7 +60,7 @@
     ]
   },
   {
-    "id": "text",
+    "id": "teaser",
     "rte": {
       "format": ["bold", "italic"],
       "alignment": [],
