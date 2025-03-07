@@ -44,6 +44,7 @@
   {
     "id": "teaser",
     "rte": {
+      "block" : ["h1","h2","h3"],
       "format": ["bold"],
       "alignment": [],
       "indentation": [],
