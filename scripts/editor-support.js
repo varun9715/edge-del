@@ -18,10 +18,10 @@ async function getFeatureFlags() {
   return metaTag;
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("Page loaded, filtering teaser components...");
-  filterBlocks(document.body);
-});
+window.onload = function() {
+  alert("Hello");
+  filterBlocks(container);
+};
 
 
 /**
