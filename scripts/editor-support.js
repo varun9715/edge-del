@@ -20,7 +20,8 @@ async function getFeatureFlags() {
 
 window.onload = function() {
   alert("Hello");
-  filterBlocks(container);
+  debugger;
+  filterBlocks(document);
 };
 
 
