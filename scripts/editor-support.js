@@ -24,11 +24,9 @@ async function getFeatureFlags() {
 async function filterBlocks(container) {
   const featureFlags = await getFeatureFlags();  // teaser
 
-  container.querySelectorAll('.block[data-feature-flag]').forEach(block => {
-    const requiredFlag = block.getAttribute('data-feature-flag');
-    if (!featureFlags.includes(requiredFlag)) {
-      block.remove(); // Hide block if feature flag is not enabled
-    }
+  container.querySelectorAll('.teaser').forEach(block => {
+    console.log(`Removing teaser block: ${block.className}`);
+    block.remove();
   });
 }
 
