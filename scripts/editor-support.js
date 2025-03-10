@@ -125,6 +125,7 @@ function attachEventListners(main) {
     'aue:content-remove',
     'aue:content-copy',
   ].forEach((eventType) => main?.addEventListener(eventType, async (event) => {
+    filterBlocks(document);
     event.stopPropagation();
     const applied = await applyChanges(event);
     if (!applied) window.location.reload();
