@@ -124,6 +124,7 @@ function attachEventListners(main) {
     'aue:content-move',
     'aue:content-remove',
     'aue:content-copy',
+    'aue:ui-select payload'
   ].forEach((eventType) => main?.addEventListener(eventType, async (event) => {
     filterBlocks(document);
     event.stopPropagation();
