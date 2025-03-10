@@ -254,6 +254,7 @@ async function loadCSS(href) {
  * @param {Object} attrs additional optional attributes
  */
 async function loadScript(src, attrs) {
+  debugger;
   return new Promise((resolve, reject) => {
     if (!document.querySelector(`head > script[src="${src}"]`)) {
       const script = document.createElement('script');
@@ -474,6 +475,7 @@ function decorateIcons(element, prefix = '') {
  * @param {Element} main The container element
  */
 function decorateSections(main) {
+  debugger;
   main.querySelectorAll(':scope > div:not([data-section-status])').forEach((section) => {
     const wrappers = [];
     let defaultContent = false;
@@ -691,6 +693,7 @@ async function waitForFirstImage(section) {
  */
 
 async function loadSection(section, loadCallback) {
+  debugger;
   const status = section.dataset.sectionStatus;
   if (!status || status === 'initialized') {
     section.dataset.sectionStatus = 'loading';
@@ -711,6 +714,7 @@ async function loadSection(section, loadCallback) {
  */
 
 async function loadSections(element) {
+  debugger;
   const sections = [...element.querySelectorAll('div.section')];
   for (let i = 0; i < sections.length; i += 1) {
     // eslint-disable-next-line no-await-in-loop
