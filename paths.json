@@ -2,7 +2,8 @@
   "mappings": [
     "/content/edge-del/:/",
     "/content/edge-del/configuration:/.helix/config.json",
-    "/content/edge-del/metadata:/metadata.json"
+    "/content/edge-del/metadata:/metadata.json",
+    "/content/edge-del/spreadsheet:/spreadsheet.json"
   ],
   "includes": [
     "/content/edge-del/"

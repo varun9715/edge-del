@@ -17,14 +17,6 @@ async function getFeatureFlags() {
   const metaTag = 'teaser';
   return metaTag;
 }
-
-window.onload = function() {
-  alert("Hello");
-  debugger;
-  filterBlocks(document);
-};
-
-
 /**
  * Filters out blocks based on feature flags
  */
