@@ -29,11 +29,17 @@ async function filterBlocks(container) {
   });
 }
 
-document.querySelector('.ntVziG_spectrum-ActionButton[aria-label="Add"]')
-    .addEventListener('click', function(event) {
-        event.stopPropagation();
-        console.log("Custom click event triggered for the Add button");
-    });
+document.addEventListener("DOMContentLoaded", function () {
+  const button = document.querySelector('.ntVziG_spectrum-ActionButton[aria-label="Add"]');
+  if (button) {
+      button.addEventListener('click', function (event) {
+          event.stopPropagation();
+          console.log("Custom click event triggered for the Add button");
+      });
+  } else {
+      console.error("Button not found in DOM");
+  }
+});
 
 async function applyChanges(event) {
   const { detail } = event;
