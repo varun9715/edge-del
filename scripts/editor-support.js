@@ -29,36 +29,29 @@ async function filterBlocks(container) {
   });
 }
 
-setTimeout(() => {
-  const button = document.querySelector('.ntVziG_spectrum-ActionButton[aria-label="Add"]');
-  if (button) {
-      console.log("Button found, intercepting React event...");
+function updateUEInstrumentation() {
+  const main = document.querySelector('main');
+  const template = document.querySelector('meta[name="template"]')?.content;
+  const sections = main.querySelectorAll('[data-aue-model$="section"]');
+  const templates = ['order-details', 'enrichment', 'pdp', 'cart', 'mini-cart', 'plp',
+    'checkout', 'search-order', 'search', 'login', 'forgot-password', 'create-account',
+    'account', 'orders', 'address', 'returns'];
+  const columnTemplates = ['account', 'orders', 'address', 'returns'];
 
-      // Find React's internal event key
-      const reactEventKey = Object.keys(button).find(key => key.startsWith("__reactProps$"));
-
-      if (reactEventKey) {
-          console.log("React event key found:", reactEventKey);
-
-          // Override React's click event
-          const originalClickHandler = button[reactEventKey].onClick;
-          button[reactEventKey].onClick = function(event) {
-              console.log("Custom React event triggered!");
-              if (originalClickHandler) {
-                  originalClickHandler(event); // Call the original event handler if needed
-              }
-          };
-
-          // Manually trigger React's click event
-          button[reactEventKey].onClick({ target: button, bubbles: true });
-      } else {
-          console.warn("React event key not found, trying native click...");
-          button.click(); // Fallback: try native click
-      }
-  } else {
-      console.error("Button not found.");
+  // updated section filters according to the template
+  if (templates.includes(template)) {
+    // update section filters
+    sections.forEach((section) => {
+      setUEFilter(section, `${template}-section`);
+    });
   }
-}, 3000);
+
+  // templates with column design have additional section type
+  if (columnTemplates.includes(template)) {
+    setUEFilter(main, 'columns-main');
+    document.body.classList.add('columns');
+  }
+}
 
 
 
@@ -151,11 +144,15 @@ function attachEventListners(main) {
     'aue:content-copy',
     'aue:ui-select payload'
   ].forEach((eventType) => main?.addEventListener(eventType, async (event) => {
-    filterBlocks(document);
     event.stopPropagation();
     const applied = await applyChanges(event);
+    if (applied) {
+      updateUEInstrumentation();
+    }
     if (!applied) window.location.reload();
   }));
 }
 
 attachEventListners(document.querySelector('main'));
+
+updateUEInstrumentation();
