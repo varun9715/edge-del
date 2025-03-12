@@ -29,19 +29,23 @@ async function filterBlocks(container) {
   });
 }
 
-setTimeout(() => {
+const observer = new MutationObserver((mutations, obs) => {
   const button = document.querySelector('.ntVziG_spectrum-ActionButton[aria-label="Add"]');
   if (button) {
-      button.addEventListener('click', function(event) {
-          console.log("Click event triggered manually!");
+      console.log("Button found!");
+
+      button.addEventListener("click", function (event) {
+          event.stopPropagation();
+          console.log("Custom click event triggered for the Add button");
       });
 
-      // Simulate a real browser click
-      button.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true }));
-  } else {
-      console.error("Button not found in DOM");
+      obs.disconnect(); // Stop observing once the button is found
   }
-}, 3000);
+});
+
+// Start observing the document for changes
+observer.observe(document.body, { childList: true, subtree: true });
+
 
 async function applyChanges(event) {
   const { detail } = event;
