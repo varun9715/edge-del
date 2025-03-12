@@ -200,6 +200,14 @@
         "value": "",
         "label": "Teaser",
         "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "template",
+        "label": "Template",
+        "valueType": "string",
+        "value": "create-account",
+        "readOnly": true
       }
     ]
   },

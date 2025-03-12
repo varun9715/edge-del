@@ -30,13 +30,11 @@ async function filterBlocks(container) {
 }
 
 function updateUEInstrumentation() {
+  debugger;
   const main = document.querySelector('main');
-  const template = document.querySelector('meta[name="template"]')?.content;
-  const sections = main.querySelectorAll('[data-aue-model$="section"]');
-  const templates = ['order-details', 'enrichment', 'pdp', 'cart', 'mini-cart', 'plp',
-    'checkout', 'search-order', 'search', 'login', 'forgot-password', 'create-account',
-    'account', 'orders', 'address', 'returns'];
-  const columnTemplates = ['account', 'orders', 'address', 'returns'];
+  const template = document.querySelector('meta[name="template"]')?.content;//teaser
+  const sections = main.querySelectorAll('[data-aue-model$="section"]');//sections
+  const templates = ['enrichment','teaser'];
 
   // updated section filters according to the template
   if (templates.includes(template)) {
@@ -44,12 +42,6 @@ function updateUEInstrumentation() {
     sections.forEach((section) => {
       setUEFilter(section, `${template}-section`);
     });
-  }
-
-  // templates with column design have additional section type
-  if (columnTemplates.includes(template)) {
-    setUEFilter(main, 'columns-main');
-    document.body.classList.add('columns');
   }
 }
 
