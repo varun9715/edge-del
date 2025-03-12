@@ -32,6 +32,7 @@ async function filterBlocks(container) {
 // set the filter for an UE editable
 function setUEFilter(element, filter) {
   element.dataset.aueFilter = filter;
+  element.dataset.aueLabel = filter;
 }
 
 
