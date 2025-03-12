@@ -32,11 +32,10 @@ async function filterBlocks(container) {
 setTimeout(() => {
   const button = document.querySelector('.ntVziG_spectrum-ActionButton[aria-label="Add"]');
   if (button) {
-      button.onclick = function () {
-          console.log("Custom event triggered via onclick");
-      };
-  } else {
-      console.error("Button not found in DOM");
+      button.addEventListener('click', function(event) {
+          event.stopImmediatePropagation(); // Stop React from interfering
+          console.log("Custom event triggered after overriding React");
+      }, true); // Use capture phase to intercept React
   }
 }, 3000);
 
