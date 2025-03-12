@@ -43,7 +43,7 @@ setTimeout(() => {
           button.click(); // Try native click if React event isn't found
       }
   } else {
-      console.error("Button not found in DOM");
+      console.log("Button not found in DOM");
   }
 }, 3000);
 
