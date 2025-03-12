@@ -29,10 +29,16 @@ async function filterBlocks(container) {
   });
 }
 
+// set the filter for an UE editable
+function setUEFilter(element, filter) {
+  element.dataset.aueFilter = filter;
+}
+
+
 function updateUEInstrumentation() {
   debugger;
   const main = document.querySelector('main');
-  const template = document.querySelector('meta[name="template"]')?.content;//teaser
+  const template = 'teaser';
   const sections = main.querySelectorAll('[data-aue-model$="section"]');//sections
   const templates = ['enrichment','teaser'];
 
