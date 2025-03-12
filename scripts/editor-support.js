@@ -29,9 +29,36 @@ async function filterBlocks(container) {
   });
 }
 
-document.addEventListener("click", function(event) {
-  console.log("Clicked element:", event.target);
-});
+setTimeout(() => {
+  const button = document.querySelector('.ntVziG_spectrum-ActionButton[aria-label="Add"]');
+  if (button) {
+      console.log("Button found, intercepting React event...");
+
+      // Find React's internal event key
+      const reactEventKey = Object.keys(button).find(key => key.startsWith("__reactProps$"));
+
+      if (reactEventKey) {
+          console.log("React event key found:", reactEventKey);
+
+          // Override React's click event
+          const originalClickHandler = button[reactEventKey].onClick;
+          button[reactEventKey].onClick = function(event) {
+              console.log("Custom React event triggered!");
+              if (originalClickHandler) {
+                  originalClickHandler(event); // Call the original event handler if needed
+              }
+          };
+
+          // Manually trigger React's click event
+          button[reactEventKey].onClick({ target: button, bubbles: true });
+      } else {
+          console.warn("React event key not found, trying native click...");
+          button.click(); // Fallback: try native click
+      }
+  } else {
+      console.error("Button not found.");
+  }
+}, 3000);
 
 
 
