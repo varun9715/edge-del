@@ -29,22 +29,24 @@ async function filterBlocks(container) {
   });
 }
 
-const observer = new MutationObserver((mutations, obs) => {
-  const button = document.querySelector('.ntVziG_spectrum-ActionButton');
+setTimeout(() => {
+  const button = document.querySelector('.ntVziG_spectrum-ActionButton[aria-label="Add"]');
   if (button) {
-      console.log("Button found!");
-
-      button.addEventListener("click", function (event) {
-          event.stopPropagation();
-          console.log("Custom click event triggered for the Add button");
-      });
-
-      obs.disconnect(); // Stop observing once the button is found
+      console.log("Button found, triggering React event...");
+      
+      // Find the React internal event handler
+      const reactEventKey = Object.keys(button).find(key => key.startsWith("__reactProps$"));
+      if (reactEventKey && button[reactEventKey]?.onClick) {
+          button[reactEventKey].onClick({ target: button, bubbles: true });
+      } else {
+          console.warn("React click handler not found, falling back to native event");
+          button.click(); // Try native click if React event isn't found
+      }
+  } else {
+      console.error("Button not found in DOM");
   }
-});
+}, 3000);
 
-// Start observing the document for changes
-observer.observe(document.body, { childList: true, subtree: true });
 
 
 async function applyChanges(event) {
