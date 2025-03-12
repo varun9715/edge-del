@@ -29,13 +29,16 @@ async function filterBlocks(container) {
   });
 }
 
-document.addEventListener('click', function (event) {
-  const button = event.target.closest('.ntVziG_spectrum-ActionButton[aria-label="Add"]');
+setTimeout(() => {
+  const button = document.querySelector('.ntVziG_spectrum-ActionButton[aria-label="Add"]');
   if (button) {
-      console.log("Custom click event triggered for the Add button");
-      event.stopPropagation();
+      button.onclick = function () {
+          console.log("Custom event triggered via onclick");
+      };
+  } else {
+      console.error("Button not found in DOM");
   }
-});
+}, 3000);
 
 async function applyChanges(event) {
   const { detail } = event;
