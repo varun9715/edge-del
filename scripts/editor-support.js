@@ -30,7 +30,7 @@ async function filterBlocks(container) {
 }
 
 const observer = new MutationObserver((mutations, obs) => {
-  const button = document.querySelector('.ntVziG_spectrum-ActionButton[aria-label="Add"]');
+  const button = document.querySelector('.ntVziG_spectrum-ActionButton');
   if (button) {
       console.log("Button found!");
 
