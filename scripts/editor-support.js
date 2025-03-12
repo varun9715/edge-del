@@ -33,9 +33,13 @@ setTimeout(() => {
   const button = document.querySelector('.ntVziG_spectrum-ActionButton[aria-label="Add"]');
   if (button) {
       button.addEventListener('click', function(event) {
-          event.stopImmediatePropagation(); // Stop React from interfering
-          console.log("Custom event triggered after overriding React");
-      }, true); // Use capture phase to intercept React
+          console.log("Click event triggered manually!");
+      });
+
+      // Simulate a real browser click
+      button.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true }));
+  } else {
+      console.error("Button not found in DOM");
   }
 }, 3000);
 
