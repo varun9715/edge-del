@@ -29,23 +29,9 @@ async function filterBlocks(container) {
   });
 }
 
-setTimeout(() => {
-  const button = document.querySelector('.ntVziG_spectrum-ActionButton[aria-label="Add"]');
-  if (button) {
-      console.log("Button found, triggering React event...");
-      
-      // Find the React internal event handler
-      const reactEventKey = Object.keys(button).find(key => key.startsWith("__reactProps$"));
-      if (reactEventKey && button[reactEventKey]?.onClick) {
-          button[reactEventKey].onClick({ target: button, bubbles: true });
-      } else {
-          console.warn("React click handler not found, falling back to native event");
-          button.click(); // Try native click if React event isn't found
-      }
-  } else {
-      console.log("Button not found in DOM");
-  }
-}, 3000);
+document.addEventListener("click", function(event) {
+  console.log("Clicked element:", event.target);
+});
 
 
 
