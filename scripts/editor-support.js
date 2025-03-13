@@ -29,14 +29,6 @@ async function filterBlocks(container) {
   });
 }
 
-function setUEFilter(element, filter) {
-  element.dataset.aueFilter = filter;
-}
-
-// Example: Set filter for different sections based on template type
-document.querySelectorAll('[data-aue-model$="section"]').forEach(section => {
-      //
-});
 
 
 async function applyChanges(event) {
