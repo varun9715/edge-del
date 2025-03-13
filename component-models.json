@@ -207,7 +207,8 @@
         "valueType": "string",
         "name": "imageAlt",
         "label": "Alt",
-        "value": ""
+        "value": "",
+        "required":true
       }
     ]
   },
