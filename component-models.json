@@ -195,19 +195,19 @@
     "id": "teaser",
     "fields": [
       {
-        "component": "richtext",
-        "name": "teaser",
-        "value": "",
-        "label": "Teaser",
-        "valueType": "string"
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false,
+        "required":true
       },
       {
         "component": "text",
-        "name": "template",
-        "label": "Template",
         "valueType": "string",
-        "value": "create-account",
-        "readOnly": true
+        "name": "imageAlt",
+        "label": "Alt",
+        "value": ""
       }
     ]
   },
