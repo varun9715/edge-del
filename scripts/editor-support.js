@@ -45,8 +45,7 @@ document.querySelectorAll('[data-aue-model$="section"]').forEach(section => {
       "hero",
       "cards",
       "columns",
-      "fragment",
-      "teaser"
+      "fragment"
     ]
   };
       setUEFilter(section, "updatesection");
