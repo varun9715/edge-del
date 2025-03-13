@@ -36,7 +36,7 @@ function setUEFilter(element, filter) {
 // Example: Set filter for different sections based on template type
 document.querySelectorAll('[data-aue-model$="section"]').forEach(section => {
   const updatesection = {
-    "id": "enrichment-section",
+    "id": "updatesection",
     "components": [
       "text",
       "image",
