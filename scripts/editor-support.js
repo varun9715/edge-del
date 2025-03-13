@@ -29,29 +29,6 @@ async function filterBlocks(container) {
   });
 }
 
-// set the filter for an UE editable
-function setUEFilter(element, filter) {
-  element.dataset.aueFilter = filter;
-  element.dataset.aueLabel = filter;
-}
-
-
-function updateUEInstrumentation() {
-  debugger;
-  const main = document.querySelector('main');
-  const template = 'teaser';
-  const sections = main.querySelectorAll('[data-aue-model$="section"]');//sections
-  const templates = ['enrichment','teaser'];
-
-  // updated section filters according to the template
-  if (templates.includes(template)) {
-    // update section filters
-    sections.forEach((section) => {
-      setUEFilter(section, `${template}-section`);
-    });
-  }
-}
-
 
 
 async function applyChanges(event) {
@@ -145,13 +122,8 @@ function attachEventListners(main) {
   ].forEach((eventType) => main?.addEventListener(eventType, async (event) => {
     event.stopPropagation();
     const applied = await applyChanges(event);
-    if (applied) {
-      updateUEInstrumentation();
-    }
     if (!applied) window.location.reload();
   }));
 }
 
 attachEventListners(document.querySelector('main'));
-
-updateUEInstrumentation();
