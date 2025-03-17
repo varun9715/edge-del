@@ -41,7 +41,7 @@
   ],
   "filters": [
     {
-      "id": "section",
+      "id": "teaser-section",
       "components": [
         "text",
         "image",
@@ -52,6 +52,19 @@
         "columns",
         "fragment",
         "teaser"
+      ]
+    },
+    {
+      "id": "section",
+      "components": [
+        "text",
+        "image",
+        "button",
+        "title",
+        "hero",
+        "cards",
+        "columns",
+        "fragment"
       ]
     }
     
